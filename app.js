@@ -23,9 +23,9 @@ const showImages = (images) => {
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
    `;
-    gallery.appendChild(div)
+    gallery.appendChild(div);
   })
-
+  togglerBtn();
 }
 
 const getImages = (query) => {
@@ -118,7 +118,9 @@ const searchBtn = () => {
     clearInterval(timer);  
     getImages(search.value)
     sliders.length = 0;
+    togglerBtn()
 }
+
 
 search.addEventListener('keyup',(e) => {
   if (e.keyCode === 13) {
@@ -135,3 +137,9 @@ const darkMode = document.getElementById('dark-change');
     darkMode.classList.toggle('active');
     content.classList.toggle('night');
  })
+
+ const togglerBtn = () => {
+  const Spinner = document.getElementById('loading');
+  Spinner.classList.toggle('d-none')
+ }
+
